@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Clock Test</title>
+  <style>
+    body {
+      margin: 0;
+      background: #333;
+      color: white;
+      font-family: Arial;
+    }
+
+    #clock-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-size: 18px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="clock-container">
+    <div id="time"></div>
+    <div id="date"></div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      let hours = now.getHours().toString().padStart(2, '0');
+      let minutes = now.getMinutes().toString().padStart(2, '0');
+      let seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+
+      let day = now.getDate().toString().padStart(2, '0');
+      let month = (now.getMonth() + 1).toString().padStart(2, '0');
+      let year = now.getFullYear();
+      document.getElementById('date').textContent = `${day}/${month}/${year}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>

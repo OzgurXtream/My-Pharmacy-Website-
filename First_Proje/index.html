@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ana Sayfa</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('arkaplan2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .dropdown button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Saat kutusu */
+    #clock-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-size: 18px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      z-index: 10;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="clock-container">
+    <div id="time"></div>
+    <div id="date"></div>
+  </div>
+
+  <h1>Hoş geldiniz!</h1>
+
+  <div class="dropdown">
+    <button>Login ▼</button>
+    <div class="dropdown-content">
+      <a href="franchise.html">Franchise</a>
+      <a href="admin.html">Admin</a>
+      <a href="pharmacy.html">Pharmacy</a>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours().toString().padStart(2, '0');
+      let minutes = now.getMinutes().toString().padStart(2, '0');
+      let seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+
+      let day = now.getDate().toString().padStart(2, '0');
+      let month = (now.getMonth() + 1).toString().padStart(2, '0');
+      let year = now.getFullYear();
+      document.getElementById('date').textContent = `${day}/${month}/${year}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
